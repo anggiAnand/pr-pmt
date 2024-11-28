@@ -12,8 +12,11 @@ promptty = TTY::Prompt.new
 
 def display_banner
   terminal_width = IO.console.winsize[1]
-  if File.exist?("module/banner")
-    message = File.open('module/banner', 'r', &:read)
+
+  root_dir = File.expand_path(File.dirname(__FILE__))
+  banner_path = File.join(root_dir, "module/banner")
+  if File.exist?(banner_path)
+    message = File.open(banner_path, 'r', &:read)
   else
     puts "Banner not found".red
     return

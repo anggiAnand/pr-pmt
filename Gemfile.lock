@@ -38,6 +38,7 @@ GEM
 
 PLATFORMS
   aarch64-linux
+  aarch64-linux-android
 
 DEPENDENCIES
   colorize
