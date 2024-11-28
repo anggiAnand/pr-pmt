@@ -9,12 +9,11 @@ require 'httparty'
 
 spinner = TTY::Spinner.new('[:spinner] Loading :title')
 promptty = TTY::Prompt.new
+ROOT_DIR = File.expand_path(File.dirname(__FILE__))
 
 def display_banner
   terminal_width = IO.console.winsize[1]
-
-  root_dir = File.expand_path(File.dirname(__FILE__))
-  banner_path = File.join(root_dir, "module/banner")
+  banner_path = File.join(ROOT_DIR, "module/banner")
   if File.exist?(banner_path)
     message = File.open(banner_path, 'r', &:read)
   else
