@@ -1,3 +1,4 @@
+#!/usr/bin/env ruby
 # frozen_string_literal: true
 
 require 'tty-prompt'
@@ -119,7 +120,7 @@ class Prompt
     else
       return nil
     end
-    if responses.code == 400 || responses.code != 200
+    if responses.code == 400 || responses.code != 200 || responses["statusCode"] == 400 || responses["statusCode"] != 200
       nil
     else
       responses.to_h
