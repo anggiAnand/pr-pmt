@@ -117,14 +117,13 @@ class Prompt
     when 'spotify'
       responses = HTTParty.get("#{url_api}#{method}?url=https://open.spotify.com/intl-id/track/#{args}",
                                headers: headers)
-      puts responses.to_h
     else
       return nil
     end
-    if responses.code == 400 || responses.codr != 200
+    if responses.code == 400 || responses.code != 200
       nil
     elsif responses.to_h.has_key?("statusCode")
-      if responses["statusCode"] != 200 || responses["statusCode"] == 400
+      if responses.to_h["statusCode"] != 200 || responses.to_h["statusCode"] == 400
         nil
       end
     else
